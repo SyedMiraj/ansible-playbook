@@ -1,0 +1,7 @@
+--- # First Tasks on Apache HTTPD
+- hosts: app
+  user: automation
+  become: yes
+  tasks:
+    - name: Uninstall httpd on Linux
+      yum: name=httpd state=absent

@@ -1,0 +1,10 @@
+--- # Loop activity
+- hosts: app
+  user: automation
+  become: yes
+  tasks:
+    - name: Create user
+      user:  name='{{item}}' state=present
+      with_items:
+        - miraj
+        - tanwai
