@@ -1,0 +1,9 @@
+--- # First Tasks on Apache HTTPD
+- hosts: app
+  user: automation
+  become: yes
+  vars:
+    program: httpd
+  tasks:
+    - name: Install httpd on Linux
+      action: yum name='{{program}}' state=installed
