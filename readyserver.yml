@@ -1,0 +1,24 @@
+---
+- name: Ready Apache server
+  hosts: test
+  user: automation
+  become: true
+  tasks:
+    - name: Install Apache
+      yum:
+        name: httpd
+        state: present
+      notify: restart httpd
+
+    - name: Enable Http traffic in the firewall
+      firewalld:
+        service: http
+        permanent: yes
+        state: enabled
+  
+  handlers:
+    - name: restart httpd
+      service:
+        name: httpd
+        state: started
+        enabled: yes 
